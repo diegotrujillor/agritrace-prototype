@@ -1,0 +1,94 @@
+graph TB
+    subgraph "Capa de Presentación"
+        MA[App Móvil<br/>React Native<br/>iOS/Android]
+        WA[Web App<br/>React + PWA<br/>Desktop/Tablet]
+        PL[Landing Pública<br/>Next.js<br/>Consulta QR]
+    end
+
+    subgraph "Capa de API Gateway"
+        GW[API Gateway<br/>Kong/AWS API Gateway]
+        AUTH[Auth Service<br/>JWT + OAuth2]
+        RATE[Rate Limiter]
+    end
+
+    subgraph "Capa de Servicios Backend"
+        US[User Service<br/>Node.js/Express]
+        FS[Farm Service<br/>CRUD Fincas/Lotes]
+        AS[Activity Service<br/>Registro Actividades]
+        CS[Certification Service<br/>Validación Certs]
+        QS[QR Service<br/>Generación/Consulta]
+        NS[Notification Service<br/>Push/Email/SMS]
+        SYNC[Sync Service<br/>Offline Queue]
+    end
+
+    subgraph "Capa de Datos"
+        PG[(PostgreSQL<br/>Datos Relacionales)]
+        MONGO[(MongoDB<br/>Actividades/Logs)]
+        REDIS[(Redis<br/>Cache/Sessions)]
+    end
+
+    subgraph "Almacenamiento de Archivos"
+        S3[S3/CloudStorage<br/>Imágenes/Docs]
+        CDN[CDN<br/>Cloudflare]
+    end
+
+    subgraph "Servicios Externos"
+        MAPS[Google Maps API<br/>Geolocalización]
+        SMS[Twilio<br/>SMS/WhatsApp]
+        EMAIL[SendGrid<br/>Email Service]
+        PUSH[Firebase FCM<br/>Push Notifications]
+    end
+
+    subgraph "Infraestructura"
+        LB[Load Balancer]
+        MON[Monitoring<br/>Datadog/New Relic]
+        LOG[Logging<br/>ELK Stack]
+    end
+
+    MA --> GW
+    WA --> GW
+    PL --> GW
+    
+    GW --> AUTH
+    GW --> RATE
+    AUTH --> US
+    
+    GW --> US
+    GW --> FS
+    GW --> AS
+    GW --> CS
+    GW --> QS
+    GW --> NS
+    GW --> SYNC
+    
+    US --> PG
+    FS --> PG
+    AS --> MONGO
+    CS --> PG
+    QS --> PG
+    SYNC --> REDIS
+    
+    US --> REDIS
+    FS --> REDIS
+    
+    AS --> S3
+    CS --> S3
+    S3 --> CDN
+    
+    NS --> SMS
+    NS --> EMAIL
+    NS --> PUSH
+    FS --> MAPS
+    
+    LB --> GW
+    MON -.Monitor.-> US
+    MON -.Monitor.-> FS
+    LOG -.Logs.-> AS
+    
+    style MA fill:#2D7A3E,color:#fff
+    style WA fill:#2D7A3E,color:#fff
+    style PL fill:#1976D2,color:#fff
+    style PG fill:#336791,color:#fff
+    style MONGO fill:#47A248,color:#fff
+    style REDIS fill:#DC382D,color:#fff
+    style S3 fill:#FF9900,color:#fff
