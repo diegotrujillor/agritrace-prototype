@@ -1,0 +1,192 @@
+{
+  "document": {
+    "id": "0:0",
+    "name": "AgriTrace Prototype",
+    "type": "DOCUMENT",
+    "children": [
+      {
+        "id": "1:0",
+        "name": "Screen 1",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": true,
+        "children": []
+      },
+      {
+        "id": "1:1",
+        "name": "Screen 2",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:2",
+        "name": "Screen 3",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:3",
+        "name": "Screen 4",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:4",
+        "name": "Screen 5",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:5",
+        "name": "Screen 6",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:6",
+        "name": "Screen 7",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      },
+      {
+        "id": "1:7",
+        "name": "Screen 8",
+        "type": "FRAME",
+        "absoluteBoundingBox": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812
+        },
+        "backgroundColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "prototypeStartNode": false,
+        "children": []
+      }
+    ]
+  },
+  "schemaVersion": 0,
+  "components": {},
+  "prototype": {
+    "1:0": {
+      "transitionNodeID": "1:1",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:1": {
+      "transitionNodeID": "1:2",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:2": {
+      "transitionNodeID": "1:3",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:3": {
+      "transitionNodeID": "1:4",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:4": {
+      "transitionNodeID": "1:5",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:5": {
+      "transitionNodeID": "1:6",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    },
+    "1:6": {
+      "transitionNodeID": "1:7",
+      "transitionDuration": 0.3,
+      "transitionEasing": "EASE_IN_OUT"
+    }
+  }
+}
