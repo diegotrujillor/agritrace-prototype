@@ -1,25 +1,60 @@
-# AgriTrace - Prototipo Navegable MVP
+# AgriTrace — Prototipo Navegable MVP
 
-## 📱 Descripción
-Prototipo navegable completo para la plataforma **AgriTrace** - Sistema de trazabilidad y exportación sostenible para productores agrícolas.
+## Descripción
 
-## 📋 Documentos Analizados
-El prototipo fue desarrollado basándose en:
+Prototipo navegable para **AgriTrace** — sistema de trazabilidad agrícola con enfoque **Farmer-First, Mobile-Only, Offline-First**.
 
-1. **Documento UI/UX (PDF 0-3)**: Especificaciones de branding, paleta de colores, tipografía y sistema de diseño
-2. **UI/UX Adicionales (PDF 3.1)**: Arquitectura de información y flujos de usuario
-3. **Especificaciones de Pantallas (PDF 3.2)**: Wireframes y especificaciones detalladas de cada pantalla
-4. **User Journey Maps (PDF 3.3)**: Journey maps de cada tipo de usuario
-5. **JSON Figma**: Estructura del prototipo con transiciones
+Estrategia MVP: app móvil simple que permite a agricultores registrar actividades sin conexión y recibir alertas. Marketplace con compradores internacionales es Phase 2.
 
-## 🎨 Sistema de Diseño Implementado
+---
 
-### Colores Primarios
+## Pantallas MVP (10 pantallas — Flujo Productor)
+
+| # | Pantalla | Key `screen` | Semana dev |
+|---|----------|--------------|------------|
+| 1 | Bienvenida | `welcome` | 1 |
+| 2 | Registro | `register` | 1 |
+| 3 | Login | `login` | 1 |
+| 4 | Dashboard vacío | `dashboardVacio` | 2 |
+| 5 | Dashboard con fincas | `dashboardFincas` | 2 |
+| 6 | Registrar finca | `registerFinca` | 2 |
+| 7 | Vista finca | `vistaFinca` | 2–3 |
+| 8 | Registrar lote | `registrarLote` | 2–3 |
+| 9 | Vista lote + timeline actividades ⭐ | `vistaLote` | 3–4 |
+| 10 | Registrar actividad | `registrarActividad` | 3–4 |
+
+**Pantalla más importante:** `vistaLote` + `registrarActividad`. Debe ser tan simple como un cuaderno.
+
+---
+
+## Pantallas Phase 2 (diferidas)
+
+| Pantalla | Key `screen` | Razón diferida |
+|----------|--------------|----------------|
+| Generar QR | `generarQR` | Marketplace — 0 demanda validada en stakeholders |
+| Trazabilidad pública | `paginaPublica` | Buyer-facing — requiere validar con 5+ compradores |
+
+Estas pantallas están visibles en el prototipo (grises, botones deshabilitados) solo para referencia de diseño.
+
+---
+
+## Flujo de Navegación MVP
+
+```
+splash → welcome → login ──────────────────────→ dashboardFincas
+                 → register → dashboardVacio → registerFinca → vistaFinca
+                                                               → registrarLote → vistaFinca
+                                                               → vistaLote → registrarActividad → vistaLote
+```
+
+---
+
+## Sistema de Diseño
+
+### Colores
 - Verde Primario: `#2D7A3E`
 - Verde Oscuro: `#1B5028`
 - Verde Claro: `#E8F5E9`
-
-### Colores Secundarios
 - Café Tierra: `#6D4C3D`
 - Amarillo Cosecha: `#F9A825`
 - Azul Certificación: `#1976D2`
@@ -28,92 +63,60 @@ El prototipo fue desarrollado basándose en:
 - Principal: **Inter** (Google Fonts)
 - Logo: **Poppins** (Semibold 600)
 
-### Espaciado (8px base)
+### Espaciado (base 8px)
 - xs: 4px | sm: 8px | md: 16px | lg: 24px | xl: 32px
-
-## 📱 Pantallas Incluidas
-
-1. **Splash Screen** - Pantalla de carga con logo animado
-2. **Welcome** - Pantalla de bienvenida con opciones de ingreso
-3. **Login** - Inicio de sesión
-4. **Registro** - Creación de cuenta (Paso 1/2)
-5. **Registrar Finca** - Formulario de registro de finca
-6. **Vista de Lote** - Visualización de lote con mapa y actividades
-7. **Registrar Actividad** - Formulario de registro de actividades
-8. **Generar QR** - Generación de código QR de trazabilidad
-9. **Página Pública** - Vista pública de trazabilidad
-
-## 🚀 Archivos Generados
-
-### Flutter/Dart
-- `agritrace_flutter_main.dart` - Código principal de la aplicación Flutter
-- `agritrace_pubspec.yaml` - Configuración del proyecto Flutter
-
-### React/JSX (Prototipo Visual)
-- `agritrace_prototype.jsx` - Componente React navegable
-
-## 💻 Uso del Prototipo Flutter
-
-### Requisitos
-- Flutter SDK 3.0.0 o superior
-- Dart SDK
-
-### Instalación
-```bash
-# Crear nuevo proyecto Flutter
-flutter create agritrace_app
-
-# Reemplazar lib/main.dart con el archivo proporcionado
-cp agritrace_flutter_main.dart agritrace_app/lib/main.dart
-
-# Copiar pubspec.yaml
-cp agritrace_pubspec.yaml agritrace_app/pubspec.yaml
-
-# Instalar dependencias
-cd agritrace_app
-flutter pub get
-
-# Ejecutar
-flutter run
-```
-
-### Nota sobre fuentes
-El prototipo utiliza las fuentes Inter y Poppins. Puedes:
-1. Descargarlas de Google Fonts
-2. O usar la versión del sistema (el código funcionará con fuentes fallback)
-
-## 🔄 Flujo de Navegación
-
-```
-Splash → Welcome → Login → Register Finca → Vista Lote
-                  ↓
-              Registro → Register Finca
-                              ↓
-                    Vista Lote → Registrar Actividad
-                              → Generar QR → Página Pública
-```
-
-## ✅ Características Implementadas
-
-- [x] Sistema de diseño completo con tokens
-- [x] Componentes reutilizables (botones, inputs, cards, badges)
-- [x] Navegación entre pantallas
-- [x] Animaciones y transiciones (300ms ease-in-out)
-- [x] Estados de badges (activo, pendiente, vencido, certificado)
-- [x] Modo offline visual indicator (componente incluido)
-- [x] Logo AgriTrace estilizado
-- [x] Código QR visual generado
-- [x] Mapa placeholder con patrón de grid
-- [x] Paisaje ilustrativo para página pública
-
-## 📐 Dimensiones
-- Mobile base: 375x812px (iPhone SE reference)
-- Diseño Mobile-first
-- Responsive ready
-
-## 👤 Autor
-Prototipo generado basado en especificaciones de Diego Trujillo (2025)
 
 ---
 
-*AgriTrace - Trazabilidad que conecta*
+## Archivos
+
+| Archivo | Descripción |
+|---------|-------------|
+| `agritrace_prototype.jsx` | Prototipo React navegable — **fuente principal** |
+| `agritrace_flutter_main.dart` | Código Flutter de referencia |
+| `agritrace_architecture.mermaid` | Diagrama de arquitectura |
+
+---
+
+## Cómo usar el prototipo React
+
+Requiere React + Tailwind CSS + Lucide React. Usar con CodeSandbox, StackBlitz o:
+
+```bash
+npx create-react-app agritrace-demo
+cd agritrace-demo
+npm install lucide-react
+# Agregar Tailwind CSS (ver tailwindcss.com/docs/guides/create-react-app)
+# Reemplazar src/App.js con agritrace_prototype.jsx
+npm start
+```
+
+El panel de navegación rápida en la esquina inferior izquierda muestra las 10 pantallas MVP (verde) y las 2 pantallas Phase 2 (gris).
+
+---
+
+## Características implementadas
+
+- [x] 10 pantallas MVP completas (flujo productor)
+- [x] Timeline vertical cronológico de actividades (pantalla más importante)
+- [x] Offline indicator en pantallas de campo
+- [x] Pantallas Phase 2 visibles pero deshabilitadas (etiqueta ⏸ Phase 2)
+- [x] Solo rol Productor en registro (Cooperativa es Phase 2)
+- [x] Navegación correcta: login/register → dashboard
+- [x] Copy: "Certifica tus cultivos y accede a mercados premium"
+- [x] Sistema de diseño completo con tokens
+- [x] Componentes reutilizables (Button, TextField, Card, Badge, OfflineBanner)
+- [x] Animaciones y transiciones (300ms)
+- [x] Dimensiones mobile-only: 375×812px
+
+---
+
+## Documentación relacionada
+
+- Priorización MVP: `agritrace-docs/01-preparacion-mvp/04-diseno-ui-ux/01-priorizacion-features-mvp.md`
+- Especificaciones pantallas: `agritrace-docs/01-preparacion-mvp/04-diseno-ui-ux/02-especificaciones-pantallas/`
+- User Journeys: `agritrace-docs/01-preparacion-mvp/04-diseno-ui-ux/03-mapas-recorrido-usuario/`
+
+---
+
+*AgriTrace — Trazabilidad que conecta · © 2025 Diego Trujillo*
