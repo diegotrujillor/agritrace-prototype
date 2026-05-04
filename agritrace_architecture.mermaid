@@ -1,94 +1,68 @@
 graph TB
-    subgraph "Capa de Presentación"
-        MA[App Móvil<br/>React Native<br/>iOS/Android]
-        WA[Web App<br/>React + PWA<br/>Desktop/Tablet]
-        PL[Landing Pública<br/>Next.js<br/>Consulta QR]
+    subgraph CLIENT ["📱 Cliente Móvil (MVP)"]
+        APP["App Móvil\nFlutter / Dart\niOS + Android"]
+        WDB["WatermelonDB\nAlmacenamiento Local\nOffline-First"]
     end
 
-    subgraph "Capa de API Gateway"
-        GW[API Gateway<br/>Kong/AWS API Gateway]
-        AUTH[Auth Service<br/>JWT + OAuth2]
-        RATE[Rate Limiter]
+    subgraph BACKEND ["⚙️ Backend MVP (Monolito Node.js)"]
+        API["API REST\nNode.js + Express"]
+        AUTH["Auth\nJWT"]
     end
 
-    subgraph "Capa de Servicios Backend"
-        US[User Service<br/>Node.js/Express]
-        FS[Farm Service<br/>CRUD Fincas/Lotes]
-        AS[Activity Service<br/>Registro Actividades]
-        CS[Certification Service<br/>Validación Certs]
-        QS[QR Service<br/>Generación/Consulta]
-        NS[Notification Service<br/>Push/Email/SMS]
-        SYNC[Sync Service<br/>Offline Queue]
+    subgraph DATA ["🗄️ Base de Datos"]
+        PG[("PostgreSQL\nFincas · Lotes · Actividades")]
     end
 
-    subgraph "Capa de Datos"
-        PG[(PostgreSQL<br/>Datos Relacionales)]
-        MONGO[(MongoDB<br/>Actividades/Logs)]
-        REDIS[(Redis<br/>Cache/Sessions)]
+    subgraph FILES ["📦 Almacenamiento de Archivos"]
+        S3["S3 / Supabase Storage\nFotos de Actividades"]
     end
 
-    subgraph "Almacenamiento de Archivos"
-        S3[S3/CloudStorage<br/>Imágenes/Docs]
-        CDN[CDN<br/>Cloudflare]
+    subgraph NOTIF ["🔔 Notificaciones"]
+        SMS["Twilio\nSMS · USSD\n50% usuarios sin smartphone"]
+        FCM["Firebase FCM\nPush Notifications\nSmartphone users"]
     end
 
-    subgraph "Servicios Externos"
-        MAPS[Google Maps API<br/>Geolocalización]
-        SMS[Twilio<br/>SMS/WhatsApp]
-        EMAIL[SendGrid<br/>Email Service]
-        PUSH[Firebase FCM<br/>Push Notifications]
+    subgraph PHASE2 ["⏸️ Phase 2 — Diferido (no construir en MVP)"]
+        WEB["Next.js\nLanding Pública QR\nTrazabilidad Comprador"]
+        REDIS[("Redis\nCache · Sessions")]
+        GW["API Gateway\nKong"]
+        MONGO[("MongoDB\nSi volumen de logs\nexige doc-store")]
+        OBS["Observabilidad\nDatadog · ELK Stack"]
+        LB["Load Balancer\n+ Microservicios"]
     end
 
-    subgraph "Infraestructura"
-        LB[Load Balancer]
-        MON[Monitoring<br/>Datadog/New Relic]
-        LOG[Logging<br/>ELK Stack]
-    end
+    %% MVP connections
+    APP <-->|"Sync automático\nal recuperar señal"| API
+    APP <--> WDB
+    API --> AUTH
+    AUTH --> PG
+    API --> PG
+    API --> S3
+    API --> SMS
+    API --> FCM
 
-    MA --> GW
-    WA --> GW
-    PL --> GW
-    
-    GW --> AUTH
-    GW --> RATE
-    AUTH --> US
-    
-    GW --> US
-    GW --> FS
-    GW --> AS
-    GW --> CS
-    GW --> QS
-    GW --> NS
-    GW --> SYNC
-    
-    US --> PG
-    FS --> PG
-    AS --> MONGO
-    CS --> PG
-    QS --> PG
-    SYNC --> REDIS
-    
-    US --> REDIS
-    FS --> REDIS
-    
-    AS --> S3
-    CS --> S3
-    S3 --> CDN
-    
-    NS --> SMS
-    NS --> EMAIL
-    NS --> PUSH
-    FS --> MAPS
-    
-    LB --> GW
-    MON -.Monitor.-> US
-    MON -.Monitor.-> FS
-    LOG -.Logs.-> AS
-    
-    style MA fill:#2D7A3E,color:#fff
-    style WA fill:#2D7A3E,color:#fff
-    style PL fill:#1976D2,color:#fff
+    %% Phase 2 (dashed)
+    WEB -.->|Phase 2| API
+    REDIS -.->|Phase 2| API
+    GW -.->|Phase 2| API
+    MONGO -.->|Phase 2| PG
+    OBS -.->|Phase 2| API
+    LB -.->|Phase 2| GW
+
+    %% Styles — MVP nodes
+    style APP fill:#2D7A3E,color:#fff
+    style WDB fill:#1B5028,color:#fff
+    style API fill:#1565C0,color:#fff
+    style AUTH fill:#1976D2,color:#fff
     style PG fill:#336791,color:#fff
-    style MONGO fill:#47A248,color:#fff
-    style REDIS fill:#DC382D,color:#fff
     style S3 fill:#FF9900,color:#fff
+    style SMS fill:#F22F46,color:#fff
+    style FCM fill:#FFCA28,color:#212121
+
+    %% Styles — Phase 2 nodes (gray)
+    style WEB fill:#9E9E9E,color:#fff
+    style REDIS fill:#9E9E9E,color:#fff
+    style GW fill:#9E9E9E,color:#fff
+    style MONGO fill:#9E9E9E,color:#fff
+    style OBS fill:#9E9E9E,color:#fff
+    style LB fill:#9E9E9E,color:#fff
