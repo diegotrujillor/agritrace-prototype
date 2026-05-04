@@ -80,16 +80,54 @@ splash → welcome → login ─────────────────
 
 ## Cómo usar el prototipo React
 
-Requiere React + Tailwind CSS + Lucide React. Usar con CodeSandbox, StackBlitz o:
+### Opción A — Sin instalación (recomendado para compartir)
+
+1. Abre **codesandbox.io** → New Sandbox → React
+2. Reemplaza el contenido de `App.js` con el contenido de `agritrace_prototype.jsx`
+3. En el panel de dependencias agrega `lucide-react`
+4. En `public/index.html` agrega dentro de `<head>`:
+   ```html
+   <script src="https://cdn.tailwindcss.com"></script>
+   ```
+5. CodeSandbox genera una URL pública — compártela directamente
+
+> **StackBlitz** funciona igual y carga más rápido en móvil.
+
+---
+
+### Opción B — Local con Create React App
 
 ```bash
+# 1. Crear proyecto
 npx create-react-app agritrace-demo
 cd agritrace-demo
+
+# 2. Instalar única dependencia del prototipo
 npm install lucide-react
-# Agregar Tailwind CSS (ver tailwindcss.com/docs/guides/create-react-app)
-# Reemplazar src/App.js con agritrace_prototype.jsx
+
+# 3. Tailwind CSS — usar CDN (suficiente para prototipo, no instalar PostCSS)
+#    Editar public/index.html y agregar dentro de <head>:
+#      <script src="https://cdn.tailwindcss.com"></script>
+#    NO usar las guías de tailwindcss.com/docs/guides/* — son para producción
+#    y requieren configurar PostCSS + tailwind.config.js innecesariamente.
+
+# 4. Copiar el archivo del prototipo a src/
+cp /ruta/a/agritrace_prototype.jsx src/agritrace_prototype.jsx
+
+# 5. Editar src/App.js — reemplazar TODO su contenido con estas 2 líneas:
+#      import AgriTracePrototype from './agritrace_prototype';
+#      export default AgriTracePrototype;
+#
+#    IMPORTANTE: NO tocar index.js — es el punto de entrada de React
+#    y ya importa App correctamente.
+
+# 6. Arrancar — no se requiere rebuild manual, hot reload actualiza al guardar
 npm start
 ```
+
+**Los demás archivos generados por CRA** (`App.css`, `App.test.js`, `index.css`,
+`logo.svg`, `reportWebVitals.js`, `setupTests.js`) pueden dejarse como están
+o eliminarse — ninguno afecta al prototipo.
 
 El panel de navegación rápida en la esquina inferior izquierda muestra las 10 pantallas MVP (verde) y las 2 pantallas Phase 2 (gris).
 
