@@ -1,10 +1,15 @@
 # AgriTrace — Prototipo Navegable MVP
 
+> ⚠️ **Repo de referencia interna de diseño** — NO distribuir directamente a prospectos.
+> Para mostrar el producto a productores, usar [`agritrace-demo`](https://github.com/diegotrujillor/agritrace-demo) (versión navegable y pulida).
+
 ## Descripción
 
 Prototipo navegable para **AgriTrace** — sistema de trazabilidad agrícola con enfoque **Farmer-First, Mobile-Only, Offline-First**.
 
 Estrategia MVP: app móvil simple que permite a agricultores registrar actividades sin conexión y recibir alertas. Marketplace con compradores internacionales es Phase 2.
+
+**Validación comercial Phase 1** (Valle del Cauca): ver [`agritrace-docs/01-preparacion-mvp/10-comercial-gtm/`](https://github.com/diegotrujillor/agritrace-docs/tree/main/01-preparacion-mvp/10-comercial-gtm).
 
 ---
 
