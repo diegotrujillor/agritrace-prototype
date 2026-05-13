@@ -7,9 +7,9 @@
 
 Prototipo navegable para **AgriTrace** — sistema de trazabilidad agrícola con enfoque **Farmer-First, Mobile-Only, Offline-First**.
 
-Estrategia MVP: app móvil simple que permite a agricultores registrar actividades sin conexión y recibir alertas. Marketplace con compradores internacionales es Phase 2.
+Estrategia MVP: app móvil simple que permite a agricultores registrar actividades sin conexión y recibir alertas. Marketplace con compradores internacionales es iteración futura.
 
-**Validación comercial Phase 1** (Valle del Cauca): ver [`agritrace-docs/01-preparacion-mvp/10-comercial-gtm/`](https://github.com/diegotrujillor/agritrace-docs/tree/main/01-preparacion-mvp/10-comercial-gtm).
+**Validación comercial MVP** (Valle del Cauca): ver [`agritrace-docs/01-preparacion-mvp/10-comercial-gtm/`](https://github.com/diegotrujillor/agritrace-docs/tree/main/01-preparacion-mvp/10-comercial-gtm).
 
 ---
 
@@ -32,7 +32,7 @@ Estrategia MVP: app móvil simple que permite a agricultores registrar actividad
 
 ---
 
-## Pantallas Phase 2 (diferidas)
+## Pantallas iteración futura (diferidas)
 
 | Pantalla | Key `screen` | Razón diferida |
 |----------|--------------|----------------|
@@ -134,7 +134,7 @@ npm start
 `logo.svg`, `reportWebVitals.js`, `setupTests.js`) pueden dejarse como están
 o eliminarse — ninguno afecta al prototipo.
 
-El panel de navegación rápida en la esquina inferior izquierda muestra las 10 pantallas MVP (verde) y las 2 pantallas Phase 2 (gris).
+El panel de navegación rápida en la esquina inferior izquierda muestra las 10 pantallas MVP (verde) y las 2 pantallas iteración futura (gris).
 
 ---
 
@@ -143,8 +143,8 @@ El panel de navegación rápida en la esquina inferior izquierda muestra las 10 
 - [x] 10 pantallas MVP completas (flujo productor)
 - [x] Timeline vertical cronológico de actividades (pantalla más importante)
 - [x] Offline indicator en pantallas de campo
-- [x] Pantallas Phase 2 visibles pero deshabilitadas (etiqueta ⏸ Phase 2)
-- [x] Solo rol Productor en registro (Cooperativa es Phase 2)
+- [x] Pantallas iteración futura visibles pero deshabilitadas (etiqueta ⏸ iteración futura)
+- [x] Solo rol Productor en registro (Cooperativa es iteración futura)
 - [x] Navegación correcta: login/register → dashboard
 - [x] Copy: "Certifica tus cultivos y accede a mercados premium"
 - [x] Sistema de diseño completo con tokens

@@ -31,7 +31,7 @@ const MVP_SCREENS = [
   'registerFinca', 'vistaFinca', 'registrarLote',
   'vistaLote', 'registrarActividad',
 ];
-const PHASE2_SCREENS = ['generarQR', 'paginaPublica'];
+const DEFERRED_SCREENS = ['generarQR', 'paginaPublica'];
 
 // ============================================================================
 // APP PRINCIPAL - AgriTrace Prototype
@@ -69,7 +69,7 @@ export default function AgriTracePrototype() {
     registrarLote: <RegistrarLoteScreen onNavigate={navigateTo} />,
     vistaLote: <VistaLoteScreen onNavigate={navigateTo} />,
     registrarActividad: <RegistrarActividadScreen onNavigate={navigateTo} />,
-    // ── Phase 2 Screens (deferred) ────────────────────────────────────────────
+    // ── iteración futura Screens (deferred) ────────────────────────────────────────────
     generarQR: <GenerarQRScreen onNavigate={navigateTo} />,
     paginaPublica: <PaginaPublicaScreen onNavigate={navigateTo} />,
   };
@@ -124,9 +124,9 @@ export default function AgriTracePrototype() {
             </button>
           ))}
         </div>
-        <p className="text-xs font-semibold text-gray-500 mb-1">⏸ Phase 2</p>
+        <p className="text-xs font-semibold text-gray-500 mb-1">⏸ iteración futura</p>
         <div className="flex flex-wrap gap-1">
-          {PHASE2_SCREENS.map((screen) => (
+          {DEFERRED_SCREENS.map((screen) => (
             <button
               key={screen}
               onClick={() => navigateTo(screen)}
@@ -1009,7 +1009,7 @@ const RegistrarActividadScreen = ({ onNavigate }) => {
 };
 
 // ============================================================================
-// PANTALLA 11 — ⏸️ PHASE 2: GENERAR QR
+// PANTALLA 11 — ⏸️ DEFERRED: GENERAR QR
 // ============================================================================
 
 const GenerarQRScreen = ({ onNavigate }) => (
@@ -1023,7 +1023,7 @@ const GenerarQRScreen = ({ onNavigate }) => (
         className="ml-auto text-xs px-2 py-1 rounded font-medium"
         style={{ backgroundColor: '#F5F5F5', color: colors.grisMedio }}
       >
-        ⏸ Phase 2
+        ⏸ iteración futura
       </span>
     </div>
 
@@ -1033,7 +1033,7 @@ const GenerarQRScreen = ({ onNavigate }) => (
     >
       <AlertCircle size={18} style={{ color: colors.grisMedio }} className="flex-shrink-0 mt-0.5" />
       <p className="text-xs" style={{ color: colors.grisMedio }}>
-        Diferido a Phase 2. Se habilitará cuando haya demanda validada con compradores internacionales.
+        Diferido a iteración futura. Se habilitará cuando haya demanda validada con compradores internacionales.
       </p>
     </div>
 
@@ -1066,7 +1066,7 @@ const GenerarQRScreen = ({ onNavigate }) => (
         <h4 className="font-semibold" style={{ color: colors.negro }}>Lote Norte</h4>
         <p className="text-sm" style={{ color: colors.grisMedio }}>Café Geisha</p>
         <div className="mt-8">
-          <Button disabled>Generar QR (Phase 2)</Button>
+          <Button disabled>Generar QR (iteración futura)</Button>
         </div>
       </Card>
     </div>
@@ -1074,7 +1074,7 @@ const GenerarQRScreen = ({ onNavigate }) => (
 );
 
 // ============================================================================
-// PANTALLA 12 — ⏸️ PHASE 2: TRAZABILIDAD PÚBLICA
+// PANTALLA 12 — ⏸️ DEFERRED: TRAZABILIDAD PÚBLICA
 // ============================================================================
 
 const PaginaPublicaScreen = ({ onNavigate }) => (
@@ -1088,7 +1088,7 @@ const PaginaPublicaScreen = ({ onNavigate }) => (
         className="ml-auto text-xs px-2 py-1 rounded font-medium"
         style={{ backgroundColor: '#F5F5F5', color: colors.grisMedio }}
       >
-        ⏸ Phase 2
+        ⏸ iteración futura
       </span>
     </div>
 
@@ -1130,7 +1130,7 @@ const PaginaPublicaScreen = ({ onNavigate }) => (
           </div>
         </div>
         <div className="mt-6">
-          <Button icon={Download} disabled>Descargar certificado (Phase 2)</Button>
+          <Button icon={Download} disabled>Descargar certificado (iteración futura)</Button>
         </div>
       </Card>
     </div>
