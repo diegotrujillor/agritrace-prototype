@@ -999,7 +999,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         _buildRoleOption('Productor', Icons.agriculture),
                         const SizedBox(width: 12),
-                        _buildRoleOption('Cooperativa', Icons.groups),
+                        _buildRoleOption(
+                          'Cooperativa',
+                          Icons.groups,
+                          disabled: true,
+                          disabledLabel: '⏸ Iteración futura',
+                        ),
                       ],
                     ),
                   ],
@@ -1020,41 +1025,61 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget _buildRoleOption(String label, IconData icon) {
-    final isSelected = _selectedRole == label;
+  Widget _buildRoleOption(
+    String label,
+    IconData icon, {
+    bool disabled = false,
+    String? disabledLabel,
+  }) {
+    final isSelected = !disabled && _selectedRole == label;
     return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            _selectedRole = label;
-          });
-        },
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: isSelected ? AgriColors.verdeClaro : AgriColors.blanco,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: isSelected ? AgriColors.verdePrimario : AgriColors.grisClaro,
-              width: isSelected ? 2 : 1,
+      child: Opacity(
+        opacity: disabled ? 0.5 : 1.0,
+        child: GestureDetector(
+          onTap: disabled
+              ? null
+              : () {
+                  setState(() {
+                    _selectedRole = label;
+                  });
+                },
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: isSelected ? AgriColors.verdeClaro : AgriColors.blanco,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isSelected ? AgriColors.verdePrimario : AgriColors.grisClaro,
+                width: isSelected ? 2 : 1,
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              Icon(
-                icon,
-                size: 32,
-                color: isSelected ? AgriColors.verdePrimario : AgriColors.grisMedio,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                label,
-                style: AgriTypography.body.copyWith(
-                  color: isSelected ? AgriColors.verdePrimario : AgriColors.grisOscuro,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+            child: Column(
+              children: [
+                Icon(
+                  icon,
+                  size: 32,
+                  color: isSelected ? AgriColors.verdePrimario : AgriColors.grisMedio,
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  label,
+                  style: AgriTypography.body.copyWith(
+                    color: isSelected ? AgriColors.verdePrimario : AgriColors.grisOscuro,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                  ),
+                ),
+                if (disabled && disabledLabel != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    disabledLabel,
+                    style: AgriTypography.small.copyWith(
+                      color: AgriColors.grisMedio,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ],
+            ),
           ),
         ),
       ),
